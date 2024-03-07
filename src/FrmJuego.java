@@ -1,7 +1,6 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -78,6 +77,16 @@ public class FrmJuego extends JFrame {
        }
 
     private void btnVerificarClick(ActionEvent evt) {
+        String mensaje = "";
+        switch (tpJugadores.getSelectedIndex()) {
+            case 0:
+                mensaje = jugador1.getGrupos();
+                break;
+            case 1:
+                mensaje = jugador2.getGrupos();
+                break;
+        }
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 
 }

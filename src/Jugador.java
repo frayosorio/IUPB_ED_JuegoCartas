@@ -26,4 +26,35 @@ public class Jugador {
         pnl.repaint();
     }
 
+    public String getGrupos() {
+        String mensaje = "No se encontraron grupos";
+
+        if (cartas[0] != null) {
+            int[] contadores = new int[13];
+
+            // for(int i = 0; i < cartas.length; i++) {
+            // Carta c=cartas[i];
+            for (Carta c : cartas) {
+                contadores[c.getNombre().ordinal()]++;
+            }
+
+            int totalGrupos = 0;
+            for (int c : contadores) {
+                if (c >= 2)
+                    totalGrupos++;
+            }
+            if (totalGrupos > 0) {
+                mensaje = "Se encontraron los siguientes grupos:\n";
+                for (int i = 0; i < contadores.length; i++) {
+                    if (contadores[i] >= 2) {
+                        mensaje += Grupo.values()[contadores[i]] + " de " + NombreCarta.values()[i] + "\n";
+                    }
+                }
+            }
+        } else {
+            mensaje = "No hay cartas repartidas";
+        }
+        return mensaje;
+    }
+
 }
